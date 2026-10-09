@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J Banners</title>
+<meta name="description" content="J Banners is a Welsh novelist. The Hydrarchy trilogy, Arthur Vale Is Dead and A:Me.">
+<meta property="og:title" content="J Banners">
+<meta property="og:description" content="Novels by J Banners.">
+<meta property="og:url" content="https://jbanners.com">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://jbanners.com">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F5F3EE;
+  --ink:#141414;
+  --muted:#5E5A53;
+  --rule:#D9D4CA;
+  --sans:'Archivo',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{position:sticky;top:0;z-index:10;background:rgba(245,243,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-bottom-color:var(--rule)}
+.bar{display:flex;justify-content:space-between;align-items:center;height:68px}
+.mark{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.32em;text-transform:uppercase;text-decoration:none}
+nav{display:flex;gap:28px}
+nav a{font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:12px 0}
+nav a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0}
+.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(56px,13vw,168px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:0}
+.hero p{font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--muted);margin:28px 0 0;max-width:30ch}
+.scroll-cue{margin-top:56px;font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--muted);align-self:flex-start;padding:12px 0}
+
+/* Sections */
+section{padding:96px 0;border-top:1px solid var(--rule)}
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+h2{font-family:var(--sans);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1;letter-spacing:-.005em;text-transform:uppercase;margin:0 0 20px}
+.intro{max-width:56ch;color:var(--muted);margin:0 0 64px}
+
+/* Shelf: the three trilogy covers side by side */
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:80px}
+@media (max-width:640px){.shelf{gap:10px}}
+
+/* Book rows */
+.book{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:56px;align-items:start;padding:56px 0;border-top:1px solid var(--rule)}
+.book:first-of-type{border-top:0}
+@media (max-width:760px){.book{grid-template-columns:1fr;gap:28px}.book .cover{max-width:240px}}
+.book h3{font-family:var(--sans);font-weight:700;font-size:28px;line-height:1.05;text-transform:uppercase;letter-spacing:.01em;margin:6px 0 10px}
+.book .tag{font-style:italic;font-size:21px;margin:0 0 20px}
+.book p{margin:0 0 14px;max-width:58ch}
+.buy{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);padding:14px 22px;min-height:44px;transition:background .2s,color .2s}
+.buy:hover{background:var(--ink);color:var(--ground)}
+.buy.soon{border-color:var(--rule);color:var(--muted);pointer-events:none}
+
+/* CSS covers, matching the cover designs */
+.cover{container-type:inline-size;aspect-ratio:11/17;width:100%;position:relative;overflow:hidden;font-family:var(--sans);box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 32px -12px rgba(0,0,0,.25);transition:transform .4s ease}
+.cover:hover{transform:translateY(-4px)}
+.cover .series{position:absolute;top:11cqw;left:11cqw;font-size:2.3cqw;letter-spacing:.3em;text-transform:uppercase}
+.cover .t{position:absolute;left:11cqw;right:11cqw;font-weight:700;font-size:12.2cqw;line-height:.95;letter-spacing:.02em;text-transform:uppercase}
+.cover .a{position:absolute;left:0;right:0;bottom:10cqw;text-align:center;font-weight:500;font-size:3cqw;letter-spacing:.32em;text-transform:uppercase}
+.cover .line{position:absolute;left:0;right:0;height:1px}
+
+.c-oceans{background:#DDD3C2;color:#2B2620}
+.c-oceans .series{color:#7A4A2E}
+.c-oceans .t{top:34cqw}
+.c-oceans .line{top:138.6cqw;background:#A0522D}
+.c-oceans .a{bottom:20cqw}
+
+.c-rising{background:linear-gradient(to bottom,#DDD3C2 0 40%,#4F6560 40% 100%);color:#ECEAE3}
+.c-rising .series{color:#3E5550}
+.c-rising .t{top:72cqw}
+
+.c-deep{background:#0F1B2B;color:#D8DEE6}
+.c-deep .series{color:#8FA3BA}
+.c-deep .line{top:6cqw;background:#3A5068}
+.c-deep .t{top:84cqw}
+
+.c-arthur{background:#F4F1EA;color:#141414}
+.c-arthur .frame{position:absolute;inset:6.4cqw;border:1px solid #141414}
+.c-arthur .t{top:62cqw;text-align:center;font-family:var(--serif);font-weight:600;font-size:6cqw;letter-spacing:.22em;line-height:1.35}
+.c-arthur .t::before,.c-arthur .t::after{content:"";display:block;width:6.4cqw;height:1px;background:#141414;margin:4cqw auto}
+.c-arthur .a{bottom:12cqw}
+
+.c-ame{background:#141B2E;color:#ECEAE3}
+.c-ame .t{top:58cqw;text-align:center;font-size:29cqw;letter-spacing:.04em}
+.c-ame .t span{color:#E8D9A8}
+
+
+/* Extract */
+.extract{margin:22px 0 6px;max-width:58ch}
+.extract summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:12px 0;min-height:44px;border-bottom:1px solid var(--ink)}
+.extract summary::-webkit-details-marker{display:none}
+.extract summary::after{content:"+";font-size:16px;letter-spacing:0}
+.extract[open] summary::after{content:"\2212"}
+.extract-body{margin-top:28px;padding-left:24px;border-left:1px solid var(--rule)}
+.extract-body p{font-size:18px;line-height:1.7;margin:0 0 16px}
+.extract-body .ch{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:12px}}
+.about p{margin:0 0 16px;max-width:58ch;font-size:20px}
+
+/* Footer */
+footer{border-top:1px solid var(--rule);padding:48px 0 64px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-family:var(--sans);font-size:13px;letter-spacing:.08em;color:var(--muted)}
+.foot a{text-decoration:none;padding:12px 0}
+.foot a:hover{color:var(--ink)}
+
+/* Gentle reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.cover:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="mark" href="#top">J Banners</a>
+    <nav aria-label="Main">
+      <a href="#books">Books</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap hero">
+    <h1>J<br>Banners</h1>
+    <p>Novelist.</p>
+    <a class="scroll-cue" href="#books">The books ↓</a>
+  </div>
+
+  <!-- ========== THE HYDRARCHY ========== -->
+  <section id="books">
+    <div class="wrap">
+      <p class="eyebrow">A trilogy</p>
+      <h2>The Hydrarchy</h2>
+      <p class="intro">The oceans have been gone for three hundred years. Then the water comes back. Three books, best read in order, starting with <em>Once Was Ocean</em>.</p>
+
+      <div class="shelf reveal" aria-hidden="true">
+        <div class="cover c-oceans"><span class="series">The Hydrarchy · I</span><span class="t">Once<br>Was<br>Ocean</span><span class="line"></span><span class="a">J Banners</span></div>
+        <div class="cover c-rising"><span class="series">The Hydrarchy · II</span><span class="t">Rising<br>Deep</span><span class="a">J Banners</span></div>
+        <div class="cover c-deep"><span class="line"></span><span class="series">The Hydrarchy · III</span><span class="t">The<br>Absolute<br>Deep</span><span class="a">J Banners</span></div>
+      </div>
+
+      <!-- BOOK 1 -->
+      <article class="book reveal">
+        <div class="cover c-oceans" role="img" aria-label="Cover of Once Was Ocean"><span class="series">The Hydrarchy · I</span><span class="t">Once<br>Was<br>Ocean</span><span class="line"></span><span class="a">J Banners</span></div>
+        <div>
+          <p class="eyebrow">Book One · Speculative fiction</p>
+          <h3>Once Was Ocean</h3>
+          <p class="tag">The sea was here. Someone took it.</p>
+          <p>The oceans have been gone for three hundred years. What water is left belongs to the Hydrarchy, measured by the cup and guarded by the gun.</p>
+          <p>In the Rust-Gutter, Kael has learned the only rule that keeps you alive: never want more than you're given. Then comes the story every child is told and no adult believes, and Kael follows the old seabed down towards the deepest place on Earth.</p>
+          <details class="extract">
+            <summary>Read the opening</summary>
+            <div class="extract-body">
+              <p class="ch">Chapter One: The Condenser Guts</p>
+              <p>The air in the lower condenser gallery did not move. It sat.</p>
+              <p>It had sat there, by Kael's reckoning, for something close to three hundred years. The same hot breath, boiled and boiled again, thick with copper-scale and rendered lard and the sour animal stink of twenty thousand people sweating through wool that never got the chance to dry. You did not breathe the gallery air. You waded through it. On a bad shift it went down your throat like warm broth and sat in your chest and you coughed it back up grey.</p>
+              <p>Kael stood on the iron catwalk three floors above the boiler pit and dragged a sleeve across his face. The sleeve was as filthy as the face, so all it did was move the grease from one place to another. Below him the fire-tubes of the Number Four Evaporator groaned like slaughtered cattle as forty tons of raw brine came down onto the red plates inside. The brine screamed the way brine always screamed. It turned to steam. The steam went up the reclaim towers to be metered, and taxed, and sold back by the cup to the same people it had been sweated out of that morning.</p>
+              <p>Thump. Thump. Thump.</p>
+              <p>The main suction piston came down in its cylinder, twice the height of a two-storey house, and the whole catwalk shuddered, and the rivets sang in their holes. Kael laid a hand flat on the rail. Not to steady himself. To read it. Four years down here had taught him to feel a machine the way you feel a bad-tempered animal, so that you knew what it meant to do a half-second before it did it. The rail was telling him the same thing the gauge had been telling him for an hour, which was that Number Four was building to a temper, and nobody with the authority to care about it did.</p>
+            </div>
+          </details>
+          <!-- When live, replace the line below with: <a class="buy" href="YOUR AMAZON LINK">Buy on Amazon</a> -->
+          <span class="buy soon">Coming soon</span>
+        </div>
+      </article>
+
+      <!-- BOOK 2 -->
+      <article class="book reveal">
+        <div class="cover c-rising" role="img" aria-label="Cover of Rising Deep"><span class="series">The Hydrarchy · II</span><span class="t">Rising<br>Deep</span><span class="a">J Banners</span></div>
+        <div>
+          <p class="eyebrow">Book Two · Speculative fiction</p>
+          <h3>Rising Deep</h3>
+          <p class="tag">They wanted the water back. Now it won't stop.</p>
+          <p>The lie is broken and the sea is coming home. It does not come gently. Basins become lakes overnight, and every survivor on the old seabed has the same thought at once: climb.</p>
+          <p>Thousands are scrambling for the High Scarp, the last ground above the rising line. The Hydrarchy got there first, and it is already deciding who gets to stand on it.</p>
+          <span class="buy soon">Coming soon</span>
+        </div>
+      </article>
+
+      <!-- BOOK 3 -->
+      <article class="book reveal">
+        <div class="cover c-deep" role="img" aria-label="Cover of The Absolute Deep"><span class="line"></span><span class="series">The Hydrarchy · III</span><span class="t">The<br>Absolute<br>Deep</span><span class="a">J Banners</span></div>
+        <div>
+          <p class="eyebrow">Book Three · Speculative fiction</p>
+          <h3>The Absolute Deep</h3>
+          <p class="tag">The last shore is gone.</p>
+          <p>The water has won. There is no land left worth the name, only a sea without edges and the people clinging to whatever floats.</p>
+          <p>Kael still believes the world can be rebuilt fairly. Vane wants only vengeance. Between them, Varek gathers what remains of the Hydrarchy's power, and not everyone reaches the end.</p>
+          <span class="buy soon">Coming soon</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== STANDALONES ========== -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Novels</p>
+      <h2>Standalones</h2>
+
+      <!-- ARTHUR VALE -->
+      <article class="book reveal">
+        <div class="cover c-arthur" role="img" aria-label="Cover of Arthur Vale Is Dead"><span class="frame"></span><span class="t">Arthur Vale<br>Is Dead</span><span class="a">J Banners</span></div>
+        <div>
+          <p class="eyebrow">Literary fiction</p>
+          <h3>Arthur Vale Is Dead</h3>
+          <p class="tag">Arthur finally has the time.</p>
+          <p>Arthur Vale spent thirty-one years settling insurance claims in Leicester. He always assumed that when he went, people would have kind things to say about him. They do, mostly. They just aren't saying them to him.</p>
+          <p>For weeks after the funeral Arthur moves through the lives he left behind, waiting to be missed. There is one person he hasn't found. Sarah, the partner he lost before he died, should be here somewhere, and Arthur means to reach her.</p>
+          <details class="extract">
+            <summary>Read the opening</summary>
+            <div class="extract-body">
+              <p class="ch">Chapter One: The Life That Happened</p>
+              <p>I died on a Tuesday, which seems about right. Nothing much has ever happened to me on a Tuesday, good or bad. It's the day of the week that exists mainly so Monday has something to lead into, and I've always felt it knew that about itself.</p>
+              <p>I was making toast. I mention this not because it matters but because I've noticed since that people like to know what you were doing, as if the activity might explain something. My grandmother died pegging out washing, and for years afterwards my mother couldn't look at a clothes peg without saying, "Well." The toast was white sliced, two pieces, because the brown had gone furry at one corner and I'd decided, standing at the bread bin in my dressing gown, that I could live without it. I had the butter out to soften. I'd put the kettle on and then turned it off again, because I wanted the tea made at the same moment the toast came up, and I knew from long experience that the kettle was quicker.</p>
+              <p>The pain started across my chest and went up into my left shoulder, as if someone had put a strap round me and was pulling it from behind. I've read the leaflets. I've sat in enough waiting rooms with nothing to look at but leaflets, and I knew perfectly well what a pain across the chest and down the left arm is supposed to mean. I remember thinking, quite clearly, that it was the shoulder rather than the arm, and that this was probably a technicality in my favour.</p>
+              <p>I sat down in the brown leather chair by the back door. It isn't a kitchen chair, strictly speaking. I bought it fifteen years ago from a shop in town that was closing down, and there was no room for it anywhere else, and Helen, who hadn't been my wife for some years at that point and so had no formal say in the matter, told me it looked like something from a dentist's waiting room in 1974. She wasn't wrong. It was very comfortable, though, and you could sit in it and look at the garden while the kettle boiled, which is more than you can say for most dentists' chairs.</p>
+              <p>I sat in it and waited for the pain to finish whatever it was doing. The toaster ticked. I thought about getting my phone, which was on the side by the bread bin, about four feet away, and decided I'd give it a minute. That was the last decision I made, and I'm aware it isn't a very good one. I'd like to say I thought about my children, or about Sarah. What I actually thought was that I'd let the toast go cold.</p>
+              <p>When the pain stopped, I felt better than I had for some time. I don't mean that the way people on the radio mean it when they've taken up swimming. I mean the stiffness had gone out of my knees, and the ache I'd had in my lower back since roughly the Millennium wasn't there any more, and I stood up out of the chair without putting my hands on the arms, which I hadn't managed in years. I went over to the toaster. The toast had popped up and was sitting there slightly overdone at the edges, which is what the toaster did on the second setting whatever the dial said.</p>
+              <p>I reached for it, and my hand went into it. Not through it; the toast simply didn't acknowledge me. I felt nothing at all, not the warmth or the crumbs. I took my hand away and looked at it. It looked like my hand. It had the scar across the knuckle from a tin of tomatoes in 1987.</p>
+              <p>I turned round, and I was sitting in the chair.</p>
+            </div>
+          </details>
+          <span class="buy soon">Coming soon</span>
+        </div>
+      </article>
+
+      <!-- A:ME -->
+      <article class="book reveal">
+        <div class="cover c-ame" role="img" aria-label="Cover of A:Me"><span class="t">A<span>:</span>ME</span><span class="a">J Banners</span></div>
+        <div>
+          <p class="eyebrow">Autofiction</p>
+          <h3>A:Me</h3>
+          <p class="tag">When we could, we did.</p>
+          <p>He is leaving. He has always been leaving. She is the closest he comes to staying.</p>
+          <p>Told through eighteen months of messages, songs and small dated moments, A:Me follows two people who found each other at exactly the wrong time. Drawn from a real relationship, it is about the one the timing was never going to allow.</p>
+          <span class="buy soon">Coming soon</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about">
+    <div class="wrap about reveal">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>J Banners</h2>
+      </div>
+      <div>
+        <p>J Banners writes about people caught between the lives they have made and the lives they might have lived.</p>
+        <p>He is Welsh, and lives and teaches in Cairo. He has spent his career in classrooms and a good deal of his spare time designing better ways to teach in them, which has left him with a lasting curiosity about why people do what they do, and a very high tolerance for noise.</p>
+        <p>He reads across literary fiction, science fiction, noir and memoir. Away from the page he cooks with more ambition than a weeknight strictly requires, and contributes to the music and worldbuilding of <em>Did Astrid Build Something?</em> Most of what he makes starts as something nobody asked for.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr">2026</span> J Banners</span>
+    <!-- When your Amazon author page exists, replace the line below with: <a href="YOUR AUTHOR PAGE LINK">Amazon author page</a> -->
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var head = document.querySelector('header');
+  window.addEventListener('scroll', function(){ head.classList.toggle('scrolled', window.scrollY > 8); }, {passive:true});
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

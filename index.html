@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>J Banners</title>
-<meta name="description" content="J Banners is a Welsh novelist. The Hydrarchy trilogy, Arthur Vale Is Dead, A:Me and The Rows.">
+<meta name="description" content="J Banners is a Welsh novelist. The Hydrarchy trilogy and Arthur Vale Is Dead, out now; Subject Remains Unchanged, The Rows and A:Me, coming soon.">
 <meta property="og:title" content="J Banners">
 <meta property="og:description" content="Novels by J Banners.">
 <meta property="og:url" content="https://jbanners.com">
@@ -13,7 +13,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
 :root{
   --ground:#F5F3EE;
@@ -39,23 +39,46 @@ nav a{font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform
 nav a:hover{color:var(--ink)}
 
 /* Hero */
-.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;padding-bottom:80px}
+.hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;padding-bottom:80px}
 .hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(56px,13vw,168px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:0}
 .hero p{font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--muted);margin:28px 0 0;max-width:30ch}
+.hero p.roles{font-family:var(--sans);font-style:normal;font-weight:500;font-size:clamp(12px,1.5vw,14px);letter-spacing:.32em;text-transform:uppercase;color:var(--ink);margin-top:36px;max-width:none;line-height:2}
+.hero p.roles span{color:var(--muted);margin:0 .15em}
+.hero p.roles br.m{display:none}
+@media (max-width:480px){.hero p.roles{font-size:11px;letter-spacing:.22em;white-space:nowrap}.hero p.roles span{margin:0}.hero p.roles br.m{display:inline}.hero p.roles .d2{display:none}}
 .scroll-cue{margin-top:56px;font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--muted);align-self:flex-start;padding:12px 0}
 
 /* Sections */
-section{padding:96px 0;border-top:1px solid var(--rule)}
+section{padding:96px 0}
 .eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 h2{font-family:var(--sans);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1;letter-spacing:-.005em;text-transform:uppercase;margin:0 0 20px}
 .intro{max-width:56ch;color:var(--muted);margin:0 0 64px}
 
-/* Shelf: the three trilogy covers side by side */
-.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:80px}
-@media (max-width:640px){.shelf{gap:10px}}
+/* Catalogue: every book at a glance, split by availability */
+.cat-label{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;margin:0 0 20px}
+.cat-label.soon{color:var(--muted)}
+.cat-label a{font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;padding:8px 0}
+.cat-label a:hover{color:var(--ink)}
+.catalogue{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin:0 0 72px;padding:0;list-style:none}
+.catalogue:last-child{margin-bottom:0}
+@media (max-width:640px){.catalogue{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}}
+.catalogue a{display:block;text-decoration:none}
+.catalogue .cover{margin-bottom:14px}
+.catalogue .name{display:block;font-family:var(--sans);font-weight:700;font-size:14px;line-height:1.2;letter-spacing:.04em;text-transform:uppercase}
+.catalogue .state{display:block;margin-top:4px;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.catalogue .state.now{color:var(--ink)}
+.catalogue .state.now::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#A0522D;margin-right:8px;vertical-align:1px}
+
+/* Groups inside a section */
+.group{padding-top:24px}
+.group + .group{margin-top:56px}
+.group-head h3{font-family:var(--sans);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1;text-transform:uppercase;margin:0 0 14px}
+.group-head .intro{margin-bottom:8px}
+.status{display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;margin:0 0 14px;border:1px solid var(--ink)}
+.status.soon{border-color:var(--rule);color:var(--muted)}
 
 /* Book rows */
-.book{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:56px;align-items:start;padding:56px 0;border-top:1px solid var(--rule)}
+.book{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:56px;align-items:start;padding:56px 0}
 .book:first-of-type{border-top:0}
 @media (max-width:760px){.book{grid-template-columns:1fr;gap:28px}.book .cover{max-width:240px}}
 .book h3{font-family:var(--sans);font-weight:700;font-size:28px;line-height:1.05;text-transform:uppercase;letter-spacing:.01em;margin:6px 0 10px}
@@ -63,6 +86,10 @@ h2{font-family:var(--sans);font-weight:700;font-size:clamp(32px,5vw,52px);line-h
 .book p{margin:0 0 14px;max-width:58ch}
 .buy{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);padding:14px 22px;min-height:44px;transition:background .2s,color .2s}
 .buy:hover{background:var(--ink);color:var(--ground)}
+.buy-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.buy-row .buy{margin-top:0}
+.buy.alt{border-color:var(--rule);color:var(--muted)}
+.buy.alt:hover{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .buy.soon{border-color:var(--rule);color:var(--muted);pointer-events:none}
 
 /* CSS covers, matching the cover designs */
@@ -116,13 +143,23 @@ h2{font-family:var(--sans);font-weight:700;font-size:clamp(32px,5vw,52px);line-h
 .c-rows .t{top:41.5cqw;left:0;right:0;text-align:center;font-size:9cqw;letter-spacing:.14em;white-space:nowrap}
 .c-rows .a{bottom:auto;top:139cqw;letter-spacing:.42em}
 
+.c-sru{background:#D6BE8C;color:#30281F}
+.c-sru .fold{position:absolute;left:0;right:0;top:0;height:13cqw;background:#C4AA76;border-bottom:1px solid #B79C66}
+.c-sru .tab{position:absolute;top:2.2cqw;right:8cqw;width:36cqw;height:11cqw;background:#D6BE8C;border-radius:2cqw 2cqw 0 0;display:flex;align-items:center;justify-content:center;font-family:'Special Elite',monospace;font-size:3.6cqw;letter-spacing:.05em}
+.c-sru .label{position:absolute;left:10cqw;right:10cqw;top:38cqw;background:#F6F2E6;box-shadow:1.2cqw 1.4cqw 0 #AA9469;padding:2.6cqw 4cqw 4cqw}
+.c-sru .label .h{display:flex;justify-content:space-between;font-family:'Special Elite',monospace;font-size:2.4cqw;padding-bottom:2cqw;border-bottom:1px solid #D67878;margin-bottom:3cqw}
+.c-sru .label .tt{display:block;font-family:'Special Elite',monospace;font-size:7.6cqw;line-height:1.28;text-align:center;background:repeating-linear-gradient(to bottom,transparent 0 9.4cqw,#CDD6E2 9.4cqw calc(9.4cqw + 1px))}
+.c-sru .typed{position:absolute;left:10cqw;right:6cqw;top:100cqw;font-family:'Special Elite',monospace;font-size:2.5cqw;line-height:1.6}
+.c-sru .stamp{position:absolute;left:44cqw;top:111cqw;border:1.1cqw solid #B2281F;color:#B2281F;font-family:var(--sans);font-weight:700;font-size:7cqw;letter-spacing:.06em;padding:.6cqw 2.6cqw;transform:rotate(-12deg);opacity:.88}
+.c-sru .a{bottom:9cqw;color:#30281F}
+
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px}
 @media (max-width:760px){.about{grid-template-columns:1fr;gap:12px}}
 .about p{margin:0 0 16px;max-width:58ch;font-size:20px}
 
 /* Footer */
-footer{border-top:1px solid var(--rule);padding:48px 0 64px}
+footer{padding:48px 0 64px}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-family:var(--sans);font-size:13px;letter-spacing:.08em;color:var(--muted)}
 .foot a{text-decoration:none;padding:12px 0}
 .foot a:hover{color:var(--ink)}
@@ -149,27 +186,48 @@ footer{border-top:1px solid var(--rule);padding:48px 0 64px}
 
   <div class="wrap hero">
     <h1>J<br>Banners</h1>
-    <p>Novelist. Educator. Musician. Chef.</p>
+    <p class="roles">Novelist <span>&middot;</span> Educator <span class="d2">&middot;</span><br class="m"> Musician <span>&middot;</span> Aspiring Chef</p>
     <a class="scroll-cue" href="#books">The books ↓</a>
   </div>
 
-  <!-- ========== THE HYDRARCHY ========== -->
+  <!-- ========== ALL BOOKS AT A GLANCE ========== -->
   <section id="books">
     <div class="wrap">
-      <p class="eyebrow">A trilogy</p>
-      <h2>The Hydrarchy</h2>
-      <p class="intro">The oceans have been gone for three hundred years. Then the water comes back. Three books, best read in order, starting with <em>Once Was Ocean</em>.</p>
+      <p class="cat-label"><span>Available now</span><a href="#available">Details ↓</a></p>
+      <ul class="catalogue reveal">
+        <li><a href="#once-was-ocean"><div aria-hidden="true" class="cover c-oceans"><span class="series">The Hydrarchy · I</span><span class="t">Once<br>Was<br>Ocean</span><span class="line"></span><span class="a">J Banners</span></div><span class="name">Once Was Ocean</span><span class="state now">Available now</span></a></li>
+        <li><a href="#rising-deep"><div aria-hidden="true" class="cover c-rising"><span class="series">The Hydrarchy · II</span><span class="t">Rising<br>Deep</span><span class="a">J Banners</span></div><span class="name">Rising Deep</span><span class="state now">Available now</span></a></li>
+        <li><a href="#the-absolute-deep"><div aria-hidden="true" class="cover c-deep"><span class="line"></span><span class="series">The Hydrarchy · III</span><span class="t">The<br>Absolute<br>Deep</span><span class="a">J Banners</span></div><span class="name">The Absolute Deep</span><span class="state now">Available now</span></a></li>
+        <li><a href="#arthur-vale-is-dead"><div aria-hidden="true" class="cover c-arthur"><span class="frame"></span><span class="t">Arthur Vale<br>Is Dead</span><span class="a">J Banners</span></div><span class="name">Arthur Vale Is Dead</span><span class="state now">Available now</span></a></li>
+      </ul>
 
-      <div class="shelf reveal" aria-hidden="true">
-        <div class="cover c-oceans"><span class="series">The Hydrarchy · I</span><span class="t">Once<br>Was<br>Ocean</span><span class="line"></span><span class="a">J Banners</span></div>
-        <div class="cover c-rising"><span class="series">The Hydrarchy · II</span><span class="t">Rising<br>Deep</span><span class="a">J Banners</span></div>
-        <div class="cover c-deep"><span class="line"></span><span class="series">The Hydrarchy · III</span><span class="t">The<br>Absolute<br>Deep</span><span class="a">J Banners</span></div>
-      </div>
+      <p class="cat-label soon"><span>Coming soon</span><a href="#coming-soon">Details ↓</a></p>
+      <ul class="catalogue reveal">
+        <li><a href="#subject-remains-unchanged"><div aria-hidden="true" class="cover c-sru"><span class="fold"></span><span class="tab">2201-K</span><span class="label"><span class="h"><span>DEPARTMENT OF READINESS</span><span>FILE</span></span><span class="tt">SUBJECT<br>REMAINS<br>UNCHANGED</span></span><span class="typed">SPECIES: HUMAN. SAMPLE: ONE.<br>ISSUED 38 YEARS AGO.</span><span class="stamp">OVERDUE</span><span class="a">J Banners</span></div><span class="name">Subject Remains Unchanged</span><span class="state">Coming soon</span></a></li>
+        <li><a href="#the-rows"><div aria-hidden="true" class="cover c-rows"><span class="band b1"></span><span class="band b2"></span><span class="band b3"></span><span class="mark"></span><span class="t">The Rows</span><span class="a">J Banners</span></div><span class="name">The Rows</span><span class="state">Coming soon</span></a></li>
+        <li><a href="#a-me"><div aria-hidden="true" class="cover c-ame"><span class="t">A<span>:</span>ME</span><span class="a">J Banners</span></div><span class="name">A:Me</span><span class="state">Coming soon</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== AVAILABLE NOW ========== -->
+  <section id="available">
+    <div class="wrap">
+      <p class="eyebrow">Out now</p>
+      <h2>Available now</h2>
+
+      <div class="group">
+        <div class="group-head">
+          <p class="eyebrow">A trilogy</p>
+          <h3>The Hydrarchy</h3>
+          <p class="intro">The oceans have been gone for three hundred years. Then the water comes back. Three books, best read in order, starting with <em>Once Was Ocean</em>.</p>
+        </div>
 
       <!-- BOOK 1 -->
-      <article class="book reveal">
+      <article class="book reveal" id="once-was-ocean">
         <div class="cover c-oceans" role="img" aria-label="Cover of Once Was Ocean"><span class="series">The Hydrarchy · I</span><span class="t">Once<br>Was<br>Ocean</span><span class="line"></span><span class="a">J Banners</span></div>
         <div>
+          <span class="status">Available now</span>
           <p class="eyebrow">Book One · Speculative fiction</p>
           <h3>Once Was Ocean</h3>
           <p class="tag">The sea was here. Someone took it.</p>
@@ -186,49 +244,50 @@ footer{border-top:1px solid var(--rule);padding:48px 0 64px}
               <p>The main suction piston came down in its cylinder, twice the height of a two-storey house, and the whole catwalk shuddered, and the rivets sang in their holes. Kael laid a hand flat on the rail. Not to steady himself. To read it. Four years down here had taught him to feel a machine the way you feel a bad-tempered animal, so that you knew what it meant to do a half-second before it did it. The rail was telling him the same thing the gauge had been telling him for an hour, which was that Number Four was building to a temper, and nobody with the authority to care about it did.</p>
             </div>
           </details>
-          <!-- When live, replace the line below with: <a class="buy" href="YOUR AMAZON LINK">Buy on Amazon</a> -->
-          <span class="buy soon">Coming soon</span>
+          <div class="buy-row"><a class="buy" href="https://www.amazon.co.uk/dp/B0HMSMJ8SX" target="_blank" rel="noopener" aria-label="Buy Once Was Ocean on Amazon UK">Buy on Amazon UK</a><a class="buy alt" href="https://www.amazon.com/dp/B0HMSMJ8SX" target="_blank" rel="noopener" aria-label="Buy Once Was Ocean on Amazon US">Amazon US</a></div>
         </div>
       </article>
 
       <!-- BOOK 2 -->
-      <article class="book reveal">
+      <article class="book reveal" id="rising-deep">
         <div class="cover c-rising" role="img" aria-label="Cover of Rising Deep"><span class="series">The Hydrarchy · II</span><span class="t">Rising<br>Deep</span><span class="a">J Banners</span></div>
         <div>
+          <span class="status">Available now</span>
           <p class="eyebrow">Book Two · Speculative fiction</p>
           <h3>Rising Deep</h3>
           <p class="tag">Kael gave the world back its sea. Now it will not stop rising.</p>
           <p>A hand's width a month. That is how the water comes: quietly, in the night, a little further up the world each time. The towns of the old seabed are being taken apart and carried uphill, and every road leads to the High Scarp, the last dry country, where the Reeve keeps a gate, a toll and a ledger of who gets in.</p>
           <p>Kael leads a column of the drowned-out up the long climb. But he has read the water, and it has told him the one thing he spent a year not asking. The Scarp is not high enough.</p>
-          <span class="buy soon">Coming soon</span>
+          <div class="buy-row"><a class="buy" href="https://www.amazon.co.uk/dp/B0HMV1XDTK" target="_blank" rel="noopener" aria-label="Buy Rising Deep on Amazon UK">Buy on Amazon UK</a><a class="buy alt" href="https://www.amazon.com/dp/B0HMV1XDTK" target="_blank" rel="noopener" aria-label="Buy Rising Deep on Amazon US">Amazon US</a></div>
         </div>
       </article>
 
       <!-- BOOK 3 -->
-      <article class="book reveal">
+      <article class="book reveal" id="the-absolute-deep">
         <div class="cover c-deep" role="img" aria-label="Cover of The Absolute Deep"><span class="line"></span><span class="series">The Hydrarchy · III</span><span class="t">The<br>Absolute<br>Deep</span><span class="a">J Banners</span></div>
         <div>
+          <span class="status">Available now</span>
           <p class="eyebrow">Book Three · Speculative fiction</p>
           <h3>The Absolute Deep</h3>
           <p class="tag">There is no shore left. There is only the Count.</p>
           <p>Twelve years after the last dry ground went under, four thousand people live on a fleet of small hulls lashed together on an open sea. Every night Pip reads the names of the living and the drowned. Every day Sen's Count decides who drinks.</p>
           <p>Then the rain stops. The casks run low, the old red ship at the heart of the fleet is worth more broken than whole, and the system built to keep everyone alive begins deciding who is worth keeping.</p>
-          <span class="buy soon">Coming soon</span>
+          <div class="buy-row"><a class="buy" href="https://www.amazon.co.uk/dp/B0HMX7FG98" target="_blank" rel="noopener" aria-label="Buy The Absolute Deep on Amazon UK">Buy on Amazon UK</a><a class="buy alt" href="https://www.amazon.com/dp/B0HMX7FG98" target="_blank" rel="noopener" aria-label="Buy The Absolute Deep on Amazon US">Amazon US</a></div>
         </div>
       </article>
-    </div>
-  </section>
+      </div>
 
-  <!-- ========== STANDALONES ========== -->
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Novels</p>
-      <h2>Standalones</h2>
+      <div class="group">
+        <div class="group-head">
+          <p class="eyebrow">A novel</p>
+          <h3>Standalone</h3>
+        </div>
 
       <!-- ARTHUR VALE -->
-      <article class="book reveal">
+      <article class="book reveal" id="arthur-vale-is-dead">
         <div class="cover c-arthur" role="img" aria-label="Cover of Arthur Vale Is Dead"><span class="frame"></span><span class="t">Arthur Vale<br>Is Dead</span><span class="a">J Banners</span></div>
         <div>
+          <span class="status">Available now</span>
           <p class="eyebrow">Literary fiction</p>
           <h3>Arthur Vale Is Dead</h3>
           <p class="tag">Arthur finally has the time.</p>
@@ -248,36 +307,57 @@ footer{border-top:1px solid var(--rule);padding:48px 0 64px}
               <p>I turned round, and I was sitting in the chair.</p>
             </div>
           </details>
-          <span class="buy soon">Coming soon</span>
+          <div class="buy-row"><a class="buy" href="https://www.amazon.co.uk/dp/B0HMQBGDV8" target="_blank" rel="noopener" aria-label="Buy Arthur Vale Is Dead on Amazon UK">Buy on Amazon UK</a><a class="buy alt" href="https://www.amazon.com/dp/B0HMQBGDV8" target="_blank" rel="noopener" aria-label="Buy Arthur Vale Is Dead on Amazon US">Amazon US</a></div>
         </div>
       </article>
+      </div>
+    </div>
+  </section>
 
-      <!-- A:ME -->
-      <article class="book reveal">
-        <div class="cover c-ame" role="img" aria-label="Cover of A:Me"><span class="t">A<span>:</span>ME</span><span class="a">J Banners</span></div>
+  <!-- ========== COMING SOON ========== -->
+  <section id="coming-soon">
+    <div class="wrap">
+      <p class="eyebrow">On the way</p>
+      <h2>Coming soon</h2>
+
+      <!-- SUBJECT REMAINS UNCHANGED -->
+      <article class="book reveal" id="subject-remains-unchanged">
+        <div class="cover c-sru" role="img" aria-label="Cover of Subject Remains Unchanged"><span class="fold"></span><span class="tab">2201-K</span><span class="label"><span class="h"><span>DEPARTMENT OF READINESS</span><span>FILE</span></span><span class="tt">SUBJECT<br>REMAINS<br>UNCHANGED</span></span><span class="typed">SPECIES: HUMAN. SAMPLE: ONE.<br>ISSUED 38 YEARS AGO.</span><span class="stamp">OVERDUE</span><span class="a">J Banners</span></div>
         <div>
-          <p class="eyebrow">Autofiction</p>
-          <h3>A:Me</h3>
-          <p class="tag">When we could, we did.</p>
-          <p>He is leaving. He was always leaving.</p>
-          <p>Told through eighteen months of their messages and the dated days between them, A:Me follows two people who found each other at exactly the wrong time. Drawn from a real relationship, it is about the one the timing was never going to allow.</p>
-          <span class="buy soon">Coming soon</span>
+          <span class="status soon">Coming soon</span>
+          <p class="eyebrow">Literary fiction · Black comedy</p>
+          <h3>Subject Remains Unchanged</h3>
+          <p class="tag">Assessment 2201-K. Thirty-eight years overdue.</p>
+          <p>Ossk was meant to watch one human for five years and decide whether humanity was ready for contact. Ossk kept watching instead. Every bar, every roof, every rule written on a napkin and broken by the weekend. Now the Department has noticed, and the deadline is June.</p>
+          <p>The human is Dyl: Welsh, charming, and brilliant at finding anybody&rsquo;s lost paperwork except his own. With a verdict due and nothing in the file that explains him, Ossk does the one thing an observer must never do: borrows a face, takes Dyl&rsquo;s own voice, and moves into the flat downstairs.</p>
         </div>
       </article>
 
       <!-- THE ROWS -->
-      <article class="book reveal">
+      <article class="book reveal" id="the-rows">
         <div class="cover c-rows" role="img" aria-label="Cover of The Rows"><span class="band b1"></span><span class="band b2"></span><span class="band b3"></span><span class="mark"></span><span class="t">The Rows</span><span class="a">J Banners</span></div>
         <div>
+          <span class="status soon">Coming soon</span>
           <p class="eyebrow">Literary fiction · Psychological</p>
           <h3>The Rows</h3>
           <p class="tag">Everyone else is still on the train.</p>
           <p>He wrote lines for a living: bright, certain words for the backs of packets and the sides of buses. When the job went he told no one, and kept catching the same train every morning to sit in a café and perform a life with nothing inside it. Then he drove north, left his keys on the front tyre at a forestry gate, and walked into a plantation where the trees grow in perfectly straight lines.</p>
           <p>He has a rucksack, a knife, and what he learned from videos of calm men making fire. The forest has no use for any of it. What survives the cold and the hunger is not the man who walked in, but a need for order: a row of objects on a fallen trunk, touched each morning in the same sequence, and a crow he trains to wait for his hand. Then the posters go up at the gate, and the searchers come into the trees calling his name.</p>
-          <span class="buy soon">Coming soon</span>
         </div>
       </article>
 
+      <!-- A:ME -->
+      <article class="book reveal" id="a-me">
+        <div class="cover c-ame" role="img" aria-label="Cover of A:Me"><span class="t">A<span>:</span>ME</span><span class="a">J Banners</span></div>
+        <div>
+          <span class="status soon">Coming soon</span>
+          <p class="eyebrow">Autofiction</p>
+          <h3>A:Me</h3>
+          <p class="tag">When we could, we did.</p>
+          <p>He is leaving. He was always leaving.</p>
+          <p>Told through eighteen months of their messages and the dated days between them, A:Me follows two people who found each other at exactly the wrong time. Drawn from a real relationship, it is about the one the timing was never going to allow.</p>
+        </div>
+      </article>
     </div>
   </section>
 
